@@ -1,44 +1,64 @@
-# 🌍 Multilingual Sentiment Analysis with Aspect Extraction
+[![DOI](https://zenodo.org/badge/932587816.svg)](https://doi.org/10.5281/zenodo.18732348)
 
-This project performs **sentiment analysis on multilingual text reviews** using **mBERT (Multilingual BERT)** and extracts aspects using **spaCy**.
+# Multilingual Sentiment Analysis with Aspect Extraction
 
-✅ **Supports more than 100 languages**  
-✅ **Automatically detects and categorizes aspects in reviews**  
-✅ **Reads reviews from an Excel file (`reviews.xlsx`) if available**  
-✅ **Falls back to static reviews if no file is found**  
-✅ **Saves sentiment results to `sentiment_results.csv`**
+This project performs multilingual sentiment analysis using Multilingual BERT (mBERT) and extracts aspects from text reviews using spaCy.
+
+The system supports more than 100 languages and can analyze reviews from an Excel file. If no file is provided, the script uses predefined sample reviews.
 
 ---
 
-## **📥 Installation & Setup**
+## Features
 
-### **1️⃣ Install Python (If Not Installed)**
+- Supports more than 100 languages using Multilingual BERT (mBERT)
+- Performs sentiment classification on multilingual reviews
+- Automatically extracts and categorizes aspects using spaCy
+- Reads reviews from `reviews.xlsx` if available
+- Falls back to predefined sample reviews if no file is found
+- Saves analysis results to `sentiment_results.csv`
 
-Download and install **Python 3.x** from [Python.org](https://www.python.org/downloads/).  
-Make sure to check **"Add Python to PATH"** during installation.
+---
 
-### **2️⃣ Clone This Repository**
+## Installation
+
+### 1. Install Python
+
+Install Python 3.x from:
+
+https://www.python.org
+
+Ensure Python is added to your system PATH.
+
+---
+
+### 2. Clone the Repository
 
 ```bash
 git clone https://github.com/yourusername/multilingual-sentiment-analysis.git
 cd multilingual-sentiment-analysis
 ```
 
-### **3️⃣ Create a Virtual Environment (Optional)**
+---
+
+### 3. Create Virtual Environment (Optional)
 
 ```bash
 python -m venv venv
-source venv/bin/activate  # Mac/Linux
-venv\Scripts\activate     # Windows
+source venv/bin/activate        # macOS/Linux
+venv\Scripts\activate           # Windows
 ```
 
-### **4️⃣ Install Dependencies**
+---
+
+### 4. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### **5️⃣ Download spaCy Model**
+---
+
+### 5. Download spaCy Model
 
 ```bash
 python -m spacy download en_core_web_sm
@@ -46,34 +66,43 @@ python -m spacy download en_core_web_sm
 
 ---
 
-## **📄 How to Use**
+## Usage
 
-### **1️⃣ Ensure `reviews.xlsx` Exists (Optional)**
+### Optional: Prepare reviews.xlsx
 
-If you want to analyze real reviews, create an **Excel file (`reviews.xlsx`)** with a single column:
-| Review |
-|-------------------------------------------|
-| "Makanannya enak dan harganya cukup terjangkau. Saya sangat puas!" |
-| "The food was delicious, but the service was slow." |
-| "La comida era excelente pero el servicio era muy lento." |
+Create an Excel file named `reviews.xlsx` with a single column:
 
-If the file is **not found**, the script will use **predefined dummy reviews**.
+```
+Review
+```
 
-### **2️⃣ Run the Script**
+Example entries:
+
+- Makanannya enak dan harganya cukup terjangkau. Saya sangat puas!
+- The food was delicious, but the service was slow.
+- La comida era excelente pero el servicio era muy lento.
+
+If the file does not exist, the script will use predefined sample reviews.
+
+---
+
+### Run the Script
 
 ```bash
 python absa.py
 ```
 
-### **3️⃣ View the Output**
+---
 
-After execution, sentiment results will be saved in:
+## Output
 
-```bash
+After execution, results will be saved in:
+
+```
 sentiment_results.csv
 ```
 
-You can open this file in **Excel** or use **Pandas**:
+You may open this file in Excel or load it using Pandas:
 
 ```python
 import pandas as pd
@@ -83,22 +112,19 @@ print(df.head())
 
 ---
 
-## **📊 Output Example**
+## Example Output
 
-After running `absa.py`, the result will look like this:
-
-| Review                                                             | Aspect  | Sentiment |
-| ------------------------------------------------------------------ | ------- | --------- |
-| "Makanannya enak dan harganya cukup terjangkau. Saya sangat puas!" | Makanan | Positif   |
-| "The food was delicious, but the service was slow."                | Lainnya | Netral    |
-| "La comida era excelente pero el servicio era muy lento."          | Lainnya | Negatif   |
-| "Saya kecewa dengan tempat ini, makanan datang sangat terlambat."  | Makanan | Negatif   |
+| Review | Aspect | Sentiment |
+|--------|--------|-----------|
+| Makanannya enak dan harganya cukup terjangkau | Makanan | Positif |
+| The food was delicious, but the service was slow | Lainnya | Netral |
+| La comida era excelente pero el servicio era muy lento | Lainnya | Negatif |
 
 ---
 
-## **🛠 Troubleshooting**
+## Troubleshooting
 
-### **1️⃣ "ModuleNotFoundError: No module named 'transformers'"**
+### ModuleNotFoundError: No module named 'transformers'
 
 Run:
 
@@ -106,7 +132,7 @@ Run:
 pip install -r requirements.txt
 ```
 
-### **2️⃣ "OSError: Can't find model 'en_core_web_sm'"**
+### OSError: Can't find model 'en_core_web_sm'
 
 Run:
 
@@ -114,20 +140,21 @@ Run:
 python -m spacy download en_core_web_sm
 ```
 
-### **3️⃣ "reviews.xlsx not found!"**
+### reviews.xlsx not found
 
-Either place the file in the same directory or let the script use dummy reviews.
-
----
-
-## **📜 License**
-
-This project is **MIT Licensed** – free to use and modify.
+Place the file in the project directory or allow the script to use default sample reviews.
 
 ---
 
-## **🌟 Credits**
+## Citation
 
-- [Hugging Face](https://huggingface.co/) for **mBERT Sentiment Model**
-- [spaCy](https://spacy.io/) for **Aspect Extraction**
-- Open-source contributors 🚀
+If you use this software for academic or research purposes, please cite:
+
+Pratama, I. W. P. (2026). Multilingual Sentiment Analysis with Aspect Extraction [Software].  
+https://doi.org/10.5281/zenodo.18732348
+
+---
+
+## License
+
+This project is licensed under the MIT License.
